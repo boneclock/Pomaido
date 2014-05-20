@@ -91,6 +91,7 @@
   <ItemGroup>
     <Content Include="back.png" />
     <Content Include="hinagiku-neko.png" />
+    <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pomaido\Pomaido.csproj">

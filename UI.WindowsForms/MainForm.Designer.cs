@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.CloseLabel = new System.Windows.Forms.Label();
             this.ChronoLabel = new System.Windows.Forms.Label();
             this.ChronoTimer = new System.Windows.Forms.Timer(this.components);
@@ -40,7 +41,7 @@
             this.CloseLabel.ForeColor = System.Drawing.Color.White;
             this.CloseLabel.Location = new System.Drawing.Point(276, 6);
             this.CloseLabel.Name = "CloseLabel";
-            this.CloseLabel.Size = new System.Drawing.Size(16, 16);
+            this.CloseLabel.Size = new System.Drawing.Size(15, 15);
             this.CloseLabel.TabIndex = 0;
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
@@ -62,7 +63,7 @@
             this.ChronoTimer.Interval = 1000;
             this.ChronoTimer.Tick += new System.EventHandler(this.ChronoTimer_Tick);
             // 
-            // Form1
+            // MainForm
             // 
             this.BackgroundImage = global::UI.WindowsForms.Properties.Resources.back;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -70,7 +71,8 @@
             this.Controls.Add(this.ChronoLabel);
             this.Controls.Add(this.CloseLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
