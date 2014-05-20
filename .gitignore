@@ -2,3 +2,4 @@ TestResults
 bin
 debug
 *.suo
+*.csproj.user
