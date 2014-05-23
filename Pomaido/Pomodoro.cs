@@ -14,6 +14,7 @@ namespace Pomaido
         public TimeSpan WorkRoundLength { get; set; }
         public TimeSpan ShortBreakRoundLength { get; set; }
         public TimeSpan LongBreakRoundLength { get; set; }
+        public int NbWorkRoundBeforeLongBreak { get; set; }
     }
 
     public class Pomodoro
@@ -47,7 +48,7 @@ namespace Pomaido
                 return;
             }
 
-            if (++nbWorkRoundDone % 4 == 0) {
+            if (++nbWorkRoundDone % settings.NbWorkRoundBeforeLongBreak == 0) {
                 StartLongBreakRound();
             } else {
                 StartShortBreakRound();

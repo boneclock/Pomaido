@@ -60,7 +60,8 @@ namespace UI.WindowsForms
             pomodoro = new Pomaido.Pomodoro(new Pomaido.PomodoroSettings {
                 WorkRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroWorkRoundLength"]),
                 ShortBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroShortBreakRoundLength"]),
-                LongBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroLongBreakRoundLength"])
+                LongBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroLongBreakRoundLength"]),
+                NbWorkRoundBeforeLongBreak = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPomodoroNbWorkRoundBeforeLongBreak"])
             });
             RefreshChronoLabel();
             ChronoTimer.Start();

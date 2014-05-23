@@ -19,7 +19,8 @@ namespace Pomaido.UnitTest
             pomodoro = new Pomodoro(new PomodoroSettings { 
                 WorkRoundLength = workRoundLength,
                 ShortBreakRoundLength = shortBreakRoundLength,
-                LongBreakRoundLength = longBreakRoundLength
+                LongBreakRoundLength = longBreakRoundLength,
+                NbWorkRoundBeforeLongBreak = 4
             });
         }
 
