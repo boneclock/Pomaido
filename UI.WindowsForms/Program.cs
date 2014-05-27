@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.WindowsForms.Forms.Main;
 
 namespace UI.WindowsForms
 {
@@ -16,7 +14,10 @@ namespace UI.WindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            var form = new MainForm();
+            var presenter = new MainPresenter(form);
+            Application.Run(form);
         }
     }
 }

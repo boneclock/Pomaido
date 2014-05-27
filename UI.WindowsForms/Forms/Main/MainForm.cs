@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace UI.WindowsForms
+namespace UI.WindowsForms.Forms.Main
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMainView
     {
 
-        private Pomaido.Pomodoro pomodoro;
+        public event Action ChangeViewMode;
+        public event Action Reset;
+        public event Action Tick;
 
         public MainForm()
         {
@@ -21,12 +22,11 @@ namespace UI.WindowsForms
         {
             PlaceWindowsAtTheRightBottomOfTheScreen();
             ShowHinagikuNeko();
-            InitializePomodoro();
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void PlaceWindowsAtTheRightBottomOfTheScreen()
@@ -55,27 +55,33 @@ namespace UI.WindowsForms
             hinagiku.Show();
         }
 
-        private void InitializePomodoro()
-        {
-            pomodoro = new Pomaido.Pomodoro(new Pomaido.PomodoroSettings {
-                WorkRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroWorkRoundLength"]),
-                ShortBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroShortBreakRoundLength"]),
-                LongBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroLongBreakRoundLength"]),
-                NbWorkRoundBeforeLongBreak = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPomodoroNbWorkRoundBeforeLongBreak"])
-            });
-            RefreshChronoLabel();
-            ChronoTimer.Start();
-        }
-
-        private void ChronoTimer_Tick(object sender, EventArgs e)
-        {
-            pomodoro.Tick();
-            RefreshChronoLabel();
-        }
-
-        private void RefreshChronoLabel()
+        public void RefreshPomodoroChrono(Pomaido.Pomodoro pomodoro)
         {
             ChronoLabel.Text = pomodoro.TimeUntilEndOfTheRound.ToString("mm':'ss");
+        }
+
+        public void RefreshViewMode(MainViewMode mode)
+        {
+            if (mode == MainViewMode.Started) { 
+                btnStart.Text = "Stop";
+            } else {
+                btnStart.Text = "Start";
+            }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            ChangeViewMode();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Tick();
         }
 
     }
