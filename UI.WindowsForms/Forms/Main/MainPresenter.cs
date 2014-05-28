@@ -1,6 +1,5 @@
 ﻿using Pomaido;
-using System;
-using System.Configuration;
+using UI.WindowsForms.Settings;
 
 namespace UI.WindowsForms.Forms.Main
 {
@@ -8,13 +7,16 @@ namespace UI.WindowsForms.Forms.Main
     {
 
         private IMainView view;
-        private Pomodoro pomodoro;
         private MainViewMode currentViewMode;
+        private IPomodoroFactory pomodoroFactory;
+        private Pomodoro pomodoro;
 
-        public MainPresenter(IMainView view)
+        public MainPresenter(IMainView view, IPomodoroFactory pomodoroFactory)
         {
             currentViewMode = MainViewMode.Stopped;
-            InitializePomodoro();
+
+            this.pomodoroFactory = pomodoroFactory;
+            this.pomodoro = pomodoroFactory.Create();
 
             this.view = view;
             this.view.ChangeViewMode += ChangeViewMode;
@@ -44,25 +46,9 @@ namespace UI.WindowsForms.Forms.Main
         private void Reset()
         {
             currentViewMode = MainViewMode.Stopped;
-            InitializePomodoro();
+            pomodoro = pomodoroFactory.Create();
             view.RefreshPomodoroChrono(pomodoro);
             view.RefreshViewMode(currentViewMode);
-        }
-
-        private void InitializePomodoro()
-        {
-            //pomodoro = new Pomodoro(new PomodoroSettings {
-            //    WorkRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroWorkRoundLength"]),
-            //    ShortBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroShortBreakRoundLength"]),
-            //    LongBreakRoundLength = TimeSpan.Parse(ConfigurationManager.AppSettings["DefaultPomodoroLongBreakRoundLength"]),
-            //    NbWorkRoundBeforeLongBreak = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPomodoroNbWorkRoundBeforeLongBreak"])
-            //});
-            pomodoro = new Pomodoro(new PomodoroSettings {
-                WorkRoundLength = TimeSpan.FromMinutes(20),
-                ShortBreakRoundLength = TimeSpan.FromMinutes(5),
-                LongBreakRoundLength = TimeSpan.FromMinutes(15),
-                NbWorkRoundBeforeLongBreak = 4
-            });
         }
 
     }

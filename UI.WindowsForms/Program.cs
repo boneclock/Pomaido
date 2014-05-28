@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using UI.WindowsForms.Forms.Main;
+using UI.WindowsForms.Settings;
 
 namespace UI.WindowsForms
 {
@@ -16,7 +17,8 @@ namespace UI.WindowsForms
             Application.SetCompatibleTextRenderingDefault(false);
 
             var form = new MainForm();
-            var presenter = new MainPresenter(form);
+            var pomodoroFactory = new PomodoroFactory();
+            var presenter = new MainPresenter(form, pomodoroFactory);
             Application.Run(form);
         }
     }
