@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UI.WindowsForms.SoundPlayer;
 
 namespace UI.WindowsForms.Forms.Main
 {
@@ -10,6 +11,8 @@ namespace UI.WindowsForms.Forms.Main
         public event Action ChangeViewMode;
         public event Action Reset;
         public event Action Tick;
+
+        private HinagikuNekoForm hinagiku;
 
         public MainForm()
         {
@@ -45,7 +48,7 @@ namespace UI.WindowsForms.Forms.Main
 
         private void ShowHinagikuNeko()
         {
-            var hinagiku = new HinagikuNekoForm();
+            hinagiku = new HinagikuNekoForm(SoundPlayerFactory.Create());
 
             hinagiku.Location = new Point(
                 this.Location.X + (this.Width / 2) - (hinagiku.Width / 2),
@@ -64,8 +67,10 @@ namespace UI.WindowsForms.Forms.Main
         {
             if (mode == MainViewMode.Started) { 
                 btnStart.Text = "Stop";
+                hinagiku.SayHayakuIkimashou();
             } else {
                 btnStart.Text = "Start";
+                hinagiku.SayDaijoubu();
             }
         }
 
