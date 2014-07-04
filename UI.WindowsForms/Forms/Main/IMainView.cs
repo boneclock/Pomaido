@@ -19,6 +19,6 @@ namespace UI.WindowsForms.Forms.Main
 
         void RefreshViewMode(MainViewMode mode);
         void RefreshPomodoroChrono(Pomodoro pomodoro);
-
+        void PomodoroChronoRoundSwitched(Pomodoro pomodoro);
     }
 }

@@ -58,6 +58,12 @@ namespace UI.WindowsForms.Forms.Main
             hinagiku.Show();
         }
 
+        public void PomodoroChronoRoundSwitched(Pomaido.Pomodoro pomodoro)
+        {
+            ISoundPlayer player = SoundPlayerFactory.Create();
+            player.Play(@"Ressources\Shared\Sounds\alarm.wav");
+        }
+
         public void RefreshPomodoroChrono(Pomaido.Pomodoro pomodoro)
         {
             ChronoLabel.Text = pomodoro.TimeUntilEndOfTheRound.ToString("mm':'ss");

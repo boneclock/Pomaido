@@ -17,12 +17,18 @@ namespace UI.WindowsForms.Forms.Main
 
             this.pomodoroFactory = pomodoroFactory;
             this.pomodoro = pomodoroFactory.Create();
+            this.pomodoro.RoundSwitched += PomodoroRoundSwitched;
 
             this.view = view;
             this.view.ChangeViewMode += ChangeViewMode;
             this.view.Reset += Reset;
             this.view.Tick += Tick;
             this.view.RefreshPomodoroChrono(pomodoro);
+        }
+
+        private void PomodoroRoundSwitched()
+        {
+            view.PomodoroChronoRoundSwitched(pomodoro);
         }
 
         private void Tick()
@@ -47,6 +53,7 @@ namespace UI.WindowsForms.Forms.Main
         {
             currentViewMode = MainViewMode.Stopped;
             pomodoro = pomodoroFactory.Create();
+            pomodoro.RoundSwitched += PomodoroRoundSwitched;
             view.RefreshPomodoroChrono(pomodoro);
             view.RefreshViewMode(currentViewMode);
         }

@@ -25,11 +25,13 @@ namespace Pomaido
         public TimeSpan TimeUntilEndOfTheRound { get; private set; }
         public PomodoroRoundType CurrentRoundType { get; private set; }
 
+        public event Action RoundSwitched;
+
         public Pomodoro(PomodoroSettings pomodoroSettings)
         {
             settings = pomodoroSettings;
             nbWorkRoundDone = 0;
-            StartWorkRound();
+            StartWorkRound(false);
         }
 
         public void Tick()
@@ -44,33 +46,45 @@ namespace Pomaido
         private void StartNextRound()
         {
             if (CurrentRoundType != PomodoroRoundType.Work) {
-                StartWorkRound();
+                StartWorkRound(true);
                 return;
             }
 
             if (++nbWorkRoundDone % settings.NbWorkRoundBeforeLongBreak == 0) {
-                StartLongBreakRound();
+                StartLongBreakRound(true);
             } else {
-                StartShortBreakRound();
+                StartShortBreakRound(true);
             }
         }
 
-        private void StartShortBreakRound()
+        private void StartShortBreakRound(bool sendNotification)
         {
             TimeUntilEndOfTheRound = settings.ShortBreakRoundLength;
             CurrentRoundType = PomodoroRoundType.ShortBreak;
+
+            if (sendNotification) {
+                RoundSwitched();
+            }
         }
 
-        private void StartLongBreakRound()
+        private void StartLongBreakRound(bool sendNotification)
         {
             TimeUntilEndOfTheRound = settings.LongBreakRoundLength;
             CurrentRoundType = PomodoroRoundType.LongBreak;
+
+            if (sendNotification) {
+                RoundSwitched();
+            }
         }
 
-        private void StartWorkRound()
+        private void StartWorkRound(bool sendNotification)
         {
             TimeUntilEndOfTheRound = settings.WorkRoundLength;
             CurrentRoundType = PomodoroRoundType.Work;
+
+            if (sendNotification) {
+                RoundSwitched();
+            }
         }
 
     }
