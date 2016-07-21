@@ -51,18 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Maids\RemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maids\RemForm.Designer.cs">
+      <DependentUpon>RemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maids\HinagikuNekoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maids\HinagikuNekoForm.Designer.cs">
+      <DependentUpon>HinagikuNekoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maids\IMaidForm.cs" />
     <Compile Include="Forms\Main\IMainView.cs" />
     <Compile Include="Forms\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HinagikuNekoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HinagikuNekoForm.Designer.cs">
-      <DependentUpon>HinagikuNekoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\MainPresenter.cs" />
     <Compile Include="Settings\IPomodoroFactory.cs" />
@@ -72,11 +79,14 @@
     <Compile Include="SoundPlayer\ISoundPlayer.cs" />
     <Compile Include="SoundPlayer\NAudioSoundPlayer.cs" />
     <Compile Include="SoundPlayer\SoundPlayerFactory.cs" />
+    <EmbeddedResource Include="Forms\Maids\RemForm.resx">
+      <DependentUpon>RemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maids\HinagikuNekoForm.resx">
+      <DependentUpon>HinagikuNekoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HinagikuNekoForm.resx">
-      <DependentUpon>HinagikuNekoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -106,7 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="back.png" />
-    <Content Include="hinagiku-neko.png" />
+    <Content Include="Ressources\Hinagiku\Avatars\hinagiku_neko.png" />
     <Content Include="icon.ico" />
     <Content Include="Ressources\Hinagiku\Sounds\Benkyou shinasai.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -123,6 +133,7 @@
     <Content Include="Ressources\Hinagiku\Sounds\Watashi wa Katsura Hinagiku.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Ressources\Rem\Avatars\rem.png" />
     <Content Include="Ressources\Shared\Sounds\alarm.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

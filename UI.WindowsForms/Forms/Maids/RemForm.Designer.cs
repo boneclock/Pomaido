@@ -1,6 +1,6 @@
-﻿namespace UI.WindowsForms
+﻿namespace UI.WindowsForms.Forms.Maids
 {
-    partial class HinagikuNekoForm
+    partial class RemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -27,29 +27,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HinagikuNekoForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemForm));
             this.SuspendLayout();
             // 
-            // HinagikuNekoForm
+            // RemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.BackgroundImage = global::UI.WindowsForms.Properties.Resources.hinagiku_neko;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackgroundImage = global::UI.WindowsForms.Properties.Resources.rem;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(212, 206);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "HinagikuNekoForm";
+            this.Name = "RemForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Pomaido";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Shown += new System.EventHandler(this.HinagikuNekoForm_Shown);
+            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.ResumeLayout(false);
 
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UI.WindowsForms.Forms.Maids;
 using UI.WindowsForms.SoundPlayer;
 
 namespace UI.WindowsForms.Forms.Main
@@ -12,7 +13,7 @@ namespace UI.WindowsForms.Forms.Main
         public event Action Reset;
         public event Action Tick;
 
-        private HinagikuNekoForm hinagiku;
+        private IMaidForm maid;
 
         public MainForm()
         {
@@ -24,7 +25,10 @@ namespace UI.WindowsForms.Forms.Main
         private void Form1_Load(object sender, EventArgs e)
         {
             PlaceWindowsAtTheRightBottomOfTheScreen();
-            ShowHinagikuNeko();
+
+            maid = new RemForm();
+            maid.SetupMaid(this, SoundPlayerFactory.Create());
+            maid.Show();
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
@@ -46,18 +50,6 @@ namespace UI.WindowsForms.Forms.Main
             );
         }
 
-        private void ShowHinagikuNeko()
-        {
-            hinagiku = new HinagikuNekoForm(SoundPlayerFactory.Create());
-
-            hinagiku.Location = new Point(
-                this.Location.X + (this.Width / 2) - (hinagiku.Width / 2),
-                this.Location.Y - hinagiku.Height + 15
-            );
-
-            hinagiku.Show();
-        }
-
         public void PomodoroChronoRoundSwitched(Pomaido.Pomodoro pomodoro)
         {
             ISoundPlayer player = SoundPlayerFactory.Create();
@@ -73,10 +65,10 @@ namespace UI.WindowsForms.Forms.Main
         {
             if (mode == MainViewMode.Started) { 
                 btnStart.Text = "Stop";
-                hinagiku.SayHayakuIkimashou();
+                maid.OnPomodoroStarted();
             } else {
                 btnStart.Text = "Start";
-                hinagiku.SayDaijoubu();
+                maid.OnPomodoroStopped();
             }
         }
 
@@ -88,12 +80,12 @@ namespace UI.WindowsForms.Forms.Main
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
+            maid.OnPomodoroReset();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             Tick();
         }
-
     }
 }
