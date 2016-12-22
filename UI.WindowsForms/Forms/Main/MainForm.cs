@@ -26,7 +26,7 @@ namespace UI.WindowsForms.Forms.Main
         {
             PlaceWindowsAtTheRightBottomOfTheScreen();
 
-            maid = new RemForm();
+            maid = new KuronekoForm();
             maid.SetupMaid(this, SoundPlayerFactory.Create());
             maid.Show();
         }
