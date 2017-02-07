@@ -5,22 +5,22 @@ using UI.WindowsForms.SoundPlayer;
 
 namespace UI.WindowsForms.Forms.Maids
 {
-    public partial class RemForm : Form, IMaidForm
+    public partial class MeguminForm : Form, IMaidForm
     {
         private ISoundPlayer soundPlayer;
 
-        public string AlarmSound { get { return null; } }
+        public string AlarmSound { get { return @"Ressources\Megumin\Sounds\explosion-sound.wav"; } }
 
-        public RemForm()
+        public MeguminForm()
         {
             InitializeComponent();
-            this.Width = 150;
-            this.Height = 225;
+            this.Width = 300;
+            this.Height = 251;
         }
 
-        private void Form_Shown(object sender, EventArgs e)
+        private void HinagikuNekoForm_Shown(object sender, EventArgs e)
         {
-            soundPlayer.Play(@"Ressources\Hinagiku\Sounds\Hinagiku to yobinasai.wav");
+            soundPlayer.Play(@"Ressources\Megumin\Sounds\Wa ga na wa megumin.wav");
         }
 
         public void SetupMaid(Main.MainForm form, ISoundPlayer soundPlayer)
@@ -28,7 +28,7 @@ namespace UI.WindowsForms.Forms.Maids
             this.soundPlayer = soundPlayer;
             this.Location = new Point(
                 form.Location.X + (form.Width / 2) - (this.Width / 2),
-                form.Location.Y - this.Height + 15
+                form.Location.Y - this.Height + 30
             );
         }
 
@@ -44,12 +44,12 @@ namespace UI.WindowsForms.Forms.Maids
 
         public void OnPomodoroStopped()
         {
-            soundPlayer.Play(@"Ressources\Hinagiku\Sounds\Daijoubu.wav");
+            soundPlayer.Play(@"Ressources\Megumin\Sounds\Saiko desu.wav");
         }
 
         public void OnPomodoroStarted()
         {
-            soundPlayer.Play(@"Ressources\Hinagiku\Sounds\Hayaku ikimashou.wav");
+            soundPlayer.Play(@"Ressources\Megumin\Sounds\Explosion.wav");
         }
 
         public void OnPomodoroReset()

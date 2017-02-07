@@ -93,6 +93,16 @@ namespace UI.WindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap megumin {
+            get {
+                object obj = ResourceManager.GetObject("megumin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rem {
             get {
                 object obj = ResourceManager.GetObject("rem", resourceCulture);

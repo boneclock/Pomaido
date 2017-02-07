@@ -9,6 +9,8 @@ namespace UI.WindowsForms.Forms.Maids
     {
         private ISoundPlayer soundPlayer;
 
+        public string AlarmSound { get { return null; } }
+
         public HinagikuNekoForm()
         {
             InitializeComponent();

@@ -26,7 +26,7 @@ namespace UI.WindowsForms.Forms.Main
         {
             PlaceWindowsAtTheRightBottomOfTheScreen();
 
-            maid = new KuronekoForm();
+            maid = new MeguminForm();
             maid.SetupMaid(this, SoundPlayerFactory.Create());
             maid.Show();
         }
@@ -53,7 +53,12 @@ namespace UI.WindowsForms.Forms.Main
         public void PomodoroChronoRoundSwitched(Pomaido.Pomodoro pomodoro)
         {
             ISoundPlayer player = SoundPlayerFactory.Create();
-            player.Play(@"Ressources\Shared\Sounds\alarm.wav");
+
+            if (string.IsNullOrEmpty(maid.AlarmSound)) {
+                player.Play(@"Ressources\Shared\Sounds\alarm.wav");
+            } else {
+                player.Play(maid.AlarmSound);
+            }
         }
 
         public void RefreshPomodoroChrono(Pomaido.Pomodoro pomodoro)

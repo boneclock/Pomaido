@@ -5,6 +5,8 @@ namespace UI.WindowsForms.Forms.Maids
 {
     public interface IMaidForm
     {
+        string AlarmSound { get; }
+
         void SetupMaid(MainForm form, ISoundPlayer soundPlayer);
 
         void Show();
